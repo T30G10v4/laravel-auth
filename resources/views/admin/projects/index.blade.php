@@ -9,6 +9,7 @@
                 <th scope="col">Created At</th>
                 <th scope="col">Description</th>
                 <th scope="col">Slug</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -18,7 +19,8 @@
                     <td>Mark</td>
                     <td>Otto</td>
                     <td>1234</td>
-                    <td>@mdo</td>
+                    <td>2345</td>
+                    <td>2345</td>
                 </tr>
             @endforeach
         </tbody>
