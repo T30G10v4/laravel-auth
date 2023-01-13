@@ -15,12 +15,30 @@
         <tbody>
             @foreach ($projects as $project)
                 <tr>
-                    <th scope="row">{{ $project->title }}</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>1234</td>
-                    <td>2345</td>
-                    <td>2345</td>
+                    <th scope="row">{{ $project->id }}</th>
+                    <td>{{ $project->title }}</td>
+                    <td>{{ $project->created_at }}</td>
+                    <td>{{ $project->description }}</td>
+                    <td>{{ $project->slug }}</td>
+                    <td>
+
+                        <a class="btn btn-success" href="{{ route('admin.projects.show', $project->slug) }}">
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
+                        <a class="btn btn-warning" href="{{ route('admin.projects.edit', $project->slug) }}">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+
+                        <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST"
+                            class="d-inline-block">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
+
+                    </td>
                 </tr>
             @endforeach
         </tbody>
