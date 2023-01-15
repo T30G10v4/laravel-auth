@@ -37,7 +37,10 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formData = $request->all();
+        $formData['slug'] = Project::generateSlug($formData['title']);
+        $project = Project::create($formData);
+        return redirect()->route('admin.projects.index');
     }
 
     /**
@@ -80,8 +83,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.projects.index');
     }
 }
